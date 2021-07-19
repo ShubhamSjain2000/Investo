@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "images" as baseurl %}
+<html>
+  <head>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- CSS only -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">  
+</head>
+<body>
+  <nav class="navclass">
+    
+    
+    &nbsp &nbsp    &nbsp &nbsp
+      <button class="button" >
+        
+        <a href="/">  Home</a>
+  
+      </button>
+      &nbsp &nbsp
+      {% if user.is_authenticated %}
+      
+      <button class="button">
+        <a href="/logout">logout </a> &nbsp;
+     
+      </button>
+      <button class="button">
+        <a href="/myads">My Ads </a> &nbsp;
+  
+  
+  
+      </button>
+  
+      
+      <button class="button">
+        <a href="/startup">Startups</a> &nbsp;
+   
+       </button>
+      {% else %}
+  
+      &nbsp &nbsp
+      <button class="button">
+       <a href="/register">register</a> &nbsp;
+  
+      </button>
+      &nbsp &nbsp
+      
+      
+      <button class="button">
+        <a href="/login">login </a> &nbsp;
+  
+      </button>
+  
+      &nbsp &nbsp
+      
+      {% endif %}
+      
+       &nbsp &nbsp
+      <button class="button">
+        <a href="/investor">investor </a> &nbsp;
+  
+      </button>
+      &nbsp &nbsp
+      <button class="button">
+        <a href="/promoter">promoter </a> &nbsp;
+  
+      </button>
+      &nbsp &nbsp
+      <button class="button">
+        <a href="/postbus">Post Your Business</a> &nbsp;
+  
+  
+      </button>
+      &nbsp &nbsp
+      <button>
+      <form action="/search" method="GET" >
+        
+        <input type="text" name = "searchkey" class="form-control"  placeholder="Enter The name of bussiness">
+        <button class="button" ><input type="submit" value= search ></button>
+  
+      </form>
+    </button>
+    &nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <a style="background-color: transparent; color:whitesmoke; font-size:x-large  " href="">Hey , {{user.first_name}} </a>
+  </nav>
+  <div class="container" style="display: flex; height: 100px; padding:20px  ">
+    
+
+    <br><br>
+    <br>
+    <br><br>
+    <div style="width: 60%; background: rgb(255, 255, 255);">
+      <br><br><br><br>
+      <br>
+      <hr>
+      <br>
+      
+      <img  height="300px"  width="600px" src="{{queryobj.img_one.url}}" alt="">
+      <br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      
+      <img  height="300px"  width="600px" src="{{queryobj.img_two.url}}" alt="">
+      <br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      
+      <img  height="300px"  width="600px" src="{{queryobj.img_three.url}}" alt="">
+        
+    </div>
+    <div style="flex-grow: 1; background: rgb(255, 254, 254); padding: 150px; height: 200px ">
+      <div class="jumbotron">
+        <h1 >{{queryobj.name}}</h1>
+        <br>
+        <hr>
+        <br>
+        <h3>Location : {{queryobj.loction}}</h3>
+        <br>
+        <hr class="my-4">
+        <br>
+        <h4>Description: <br> <br>{{queryobj.description}}</h4>
+        <br>
+        <hr>
+        <br>
+        <h4>Opened :  {{queryobj.opencount}} Times </h4><br>
+        <hr>
+      <br>
+        <h4>Owner: {{queryobj.owner}}</h4> 
+        <br>
+        <hr>
+        <br>
+        <h4> Email : {{email}} </h4>
+        <br>
+<hr>
+        
+        <a href="/like?id={{ queryobj.id|urlencode }}"><button class="card-btn"><h4>Likes :- {{queryobj.likes}}</h4></button></a>
+          
+      </div>
+      
+    </div>
+</div>
+ 
+  
+  </body>
+</html>

@@ -1,0 +1,110 @@
+
+{% load static %}
+{% static "images" as baseurl %}
+<head>
+    
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<nav class="navclass">
+    
+    
+    &nbsp &nbsp    &nbsp &nbsp
+      <button class="button" >
+        
+        <a href="/">  Home</a>
+  
+      </button>
+      &nbsp &nbsp
+      {% if user.is_authenticated %}
+      
+      <button class="button">
+        <a href="/logout">logout </a> &nbsp;
+     
+      </button>
+      <button class="button">
+        <a href="/myads">My Ads </a> &nbsp;
+  
+  
+  
+      </button>
+  
+      
+      {% else %}
+  
+      &nbsp &nbsp
+      <button class="button">
+       <a href="/register">register</a> &nbsp;
+  
+      </button>
+      &nbsp &nbsp
+      
+      
+      <button class="button">
+        <a href="/login">login </a> &nbsp;
+  
+      </button>
+  
+      &nbsp &nbsp
+      
+      {% endif %}
+      
+      <button class="button">
+        <a href="/startup">Startups</a> &nbsp;
+   
+       </button>
+      
+       &nbsp &nbsp
+      <button class="button">
+        <a href="/investor">investor </a> &nbsp;
+  
+      </button>
+      &nbsp &nbsp
+      <button class="button">
+        <a href="/promoter">promoter </a> &nbsp;
+  
+      </button>
+      &nbsp &nbsp
+      <button class="button">
+        <a href="/postbus">Post Your Business</a> &nbsp;
+  
+  
+      </button>
+      &nbsp &nbsp
+      <button>
+      <form action="/search" method="GET" >
+        
+        <input type="text" name = "searchkey" class="form-control"  placeholder="Enter The name of bussiness">
+        <button class="button" ><input type="submit" value= search ></button>
+  
+      </form>
+    </button>
+    &nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+    <a style="background-color: transparent; color:whitesmoke; font-size:x-large  " href="">Hey , {{user.first_name}} </a>
+  </nav>
+
+<body>
+    
+    <div class="grid">
+        {% for bus in searchresult %}
+        <div class="grid-item">
+          <div class="card">
+            <img  height="200px" width="300px" src="{{bus.img_one.url}}" alt="Rome" />
+            
+            <div class="card-content">
+              <h1 class="card-header">{{bus.name}}</h1>
+              <br>
+              <p class="card-text">
+                {{bus.description}}
+              </p>
+              <a href="/bussquery?name={{ bus.name|urlencode }}&location={{ bus.loction|urlencode }}&description={{bus.description|urlencode}}&owner={{bus.owner|urlencode}}&img_one={{bus.img_one|urlencode}}&img_two={{bus.img_two|urlencode}}&img_three={{bus.img_three|urlencode}}&id={{bus.id|urlencode}}"><button class="card-btn">More<span>&rarr;</span></button></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+        
+      </div>
+  
+  
+</body>

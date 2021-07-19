@@ -1,0 +1,46 @@
+<head>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+</head>
+
+    <br>
+    <br>
+    <form action="poststartup" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+
+        
+        
+        <div class="form-group"  >
+        
+              <label for="exampleInputEmail1">Bussiness Name</label>
+              <input type="text" name = "name" class="form-control"  placeholder="Enter the Name of your Business">
+              <br><br>
+
+              <label for="exampleInputEmail1">Location</label>
+      <input type="text" name = "loction" class="form-control"  placeholder="enter location">
+      <br><br>
+      <label for="exampleInputEmail1">Addresss</label>
+      <input type="text" name = "address" class="form-control"  placeholder="Enter Complete Address">
+      <br><br>
+      <label for="exampleInputEmail1">Description</label>
+      <input type="text" name = "description" class="form-control"  placeholder="minimum 30 words">
+      <br><br>
+      <label for="exampleInputEmail1">Owner</label>
+      <input type="text"  name="owner" value = {{user.first_name}} readonly>
+      <br><br>
+      
+     
+        <label for="img">Select image:</label>
+        <input type="file" id="img_one" name="img_one" accept="image/*">
+        <input type="file" id="img_two" name="img_two" accept="image/*">
+        <input type="file" id="img_three" name="img_three" accept="image/*">
+        
+        
+      
+        <br>
+        <br>
+            <input type="submit" value= Submit >
+    </form>
+        
+

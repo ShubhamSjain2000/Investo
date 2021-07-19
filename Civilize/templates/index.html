@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+{% static "images" as baseurl %}
+<html lang="en">
+<head>
+    <!-- CSS only -->
+   
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Document</title>
+</head>
+<body >
+  <nav class="navclass">
+    
+    
+  &nbsp &nbsp    &nbsp &nbsp
+    <button class="button" >
+      
+      <a href="/">  Home</a>
+
+    </button>
+    &nbsp &nbsp
+    {% if user.is_authenticated %}
+    
+    <button class="button">
+      <a href="/logout">logout </a> &nbsp;
+   
+    </button>
+    <button class="button">
+      <a href="/myads">My Ads </a> &nbsp;
+
+
+
+    </button>
+
+    
+    <button class="button">
+      <a href="/startup">Startups</a> &nbsp;
+ 
+     </button>
+    {% else %}
+
+    &nbsp &nbsp
+    <button class="button">
+     <a href="/register">register</a> &nbsp;
+
+    </button>
+    &nbsp &nbsp
+    
+    
+    <button class="button">
+      <a href="/login">login </a> &nbsp;
+
+    </button>
+
+    &nbsp &nbsp
+    
+    {% endif %}
+    
+    <button class="button">
+      <a href="/startup">Startups</a> &nbsp;
+ 
+     </button>
+    
+     &nbsp &nbsp
+    <button class="button">
+      <a href="/investor">investor </a> &nbsp;
+
+    </button>
+    &nbsp &nbsp
+    <button class="button">
+      <a href="/promoter">promoter </a> &nbsp;
+
+    </button>
+    &nbsp &nbsp
+    <button class="button">
+      <a href="/postbus">Post Your Business</a> &nbsp;
+
+
+    </button>
+    &nbsp &nbsp
+    <button>
+    <form action="/search" method="GET" >
+      
+      <input type="text" name = "searchkey" class="form-control"  placeholder="Enter The name of bussiness">
+      <button class="button" ><input type="submit" value= search ></button>
+
+    </form>
+  </button>
+  &nbsp;  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+  <a style="background-color: transparent; color:whitesmoke; font-size:x-large  " href="">Hey , {{user.first_name}} </a>
+</nav>
+  
+  <html>
+ 
+ <body>
+    <div class="container" style="display: flex; height: 100px;  ">
+        <div style="width: 50%; background: white;">
+          
+          <img  height="400px"  width="800px" src="{% static 'images/img1.JPG' %}" alt="">
+  
+            
+        </div>
+        <div style="width: 50%; background: white; padding: 60px; height: 200px ">
+          <div class="boxed" >
+            <h3>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, ratione expedita asperiores dicta, necessitatibus optio debitis voluptas, dolorum officia veritatis quisquam suscipit placeat unde quod qui repellendus! Magnam, repudiandae nobis.
+            Lorem ipsum dolor sit amet cons
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo veritatis quisquam voluptate recusandae non dolorum repudiandae id, animi tempora suscipit? Debitis nesciunt vitae accusamus veritatis quasi molestias, aperiam mollitia odio!
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis, quam ea praesentium accusantium fugiat est eos placeat temporibus hic necessitatibus perferendis, tenetur odio minima alias doloremque. Impedit minima cum in?
+          </h3>
+          </div>
+        </div>
+    
+
+    </div>
+    
+
+    
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <br><br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <h1 style="background-color:rgb(54, 39, 39) 191 , 191 ; " >
+      Best Today  
+    </h1>
+    <br>
+    <br>
+    <div class="grid">
+    
+      {% for bus in buss %}
+      <div class="grid-item">
+        <div class="card">
+          <img  height="200px" width="280px" style="border-radius: 20px;" src="{{bus.img_one.url}}" alt="Rome" />
+          
+          <div class="card-content">
+            <h1 class="card-header">{{bus.name}}</h1>
+            <br>
+            <p class="card-text">
+              {{bus.shortdescription}}
+            </p>
+            <a href="/bussquery?name={{ bus.name|urlencode }}&location={{ bus.loction|urlencode }}&description={{bus.description|urlencode}}&owner={{bus.owner|urlencode}}&img_one={{bus.img_one|urlencode}}&img_two={{bus.img_two|urlencode}}&img_three={{bus.img_three|urlencode}}&id={{bus.id|urlencode}}"><button class="card-btn">More<span>&rarr;</span></button></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+      
+   
+</body>
+</html>

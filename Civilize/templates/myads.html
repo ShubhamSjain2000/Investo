@@ -1,0 +1,30 @@
+
+{% load static %}
+{% static "images" as baseurl %}
+<head>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+  </head>
+<body>
+      
+<div class="grid">
+    
+    {% for bus in buss %}
+    <div class="grid-item">
+      <div class="card">
+        <img  height="200px" width="280px" style="border-radius: 20px;" src="{{bus.img_one.url}}" alt="Rome" />
+        
+        <div class="card-content">
+          <h1 class="card-header">{{bus.name}}</h1>
+          <br>
+          <p class="card-text">
+            {{bus.description}}
+          </p>
+          <a href="/bussquery?name={{ bus.name|urlencode }}&location={{ bus.loction|urlencode }}&description={{bus.description|urlencode}}&owner={{bus.owner|urlencode}}&img_one={{bus.img_one|urlencode}}&img_two={{bus.img_two|urlencode}}&img_three={{bus.img_three|urlencode}}&id={{bus.id|urlencode}}"><button class="card-btn">More<span>&rarr;</span></button></a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+</body>
